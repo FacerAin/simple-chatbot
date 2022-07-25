@@ -1,2 +1,2 @@
 # simple-chatbot
-Simple Chatbot Recipe Using Pytorch
+Simple QnA Chatbot Recipe Using Pytorch
