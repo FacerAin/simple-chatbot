@@ -1,4 +1,4 @@
-from copyreg import pickle
+import pickle
 from konlpy.tag import Komoran
 
 class Preprocess:
@@ -39,5 +39,12 @@ class Preprocess:
             try:
                 w2i.append(self.word_index[word])
             except KeyError:
-                w2i.append(self.word_index['UNK'])
+                w2i.append(self.word_index['<unk>'])
         return w2i
+
+    def get_padding_sequence(self, keywords, max_len):
+        if len(keywords) < max_len:
+            keywords += [self.word_index['<pad>']] * (max_len - len(keywords))
+        else:
+            keywords = keywords[:max_len]
+        return keywords
